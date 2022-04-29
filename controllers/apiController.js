@@ -30,6 +30,7 @@ getBuyParams = async (count) => {
             for (let i of rows) tokens.push('0x' + i.tokenId)
         }   
         const signature = await sign(tokens, Price)
+        console.log(Price)
         for (let i of tokens) {
             await NftModal.updateMany({ tokenId: i.substring(2) }, { address: 'dfsdf' })
         }
@@ -41,8 +42,8 @@ getBuyParams = async (count) => {
 }
 getPrice = async () => {
     try {
-        var totalSales = await NftModal.find({ address: { $ne: '' } }).count();
-        var price = totalSales >= 888 ? config.NFT_price : '0';
+
+        var price =  config.NFT_price ;
         Price = ethers.utils.parseEther(price).toHexString();
         return { err: 0, price: price };
     } catch (ex) {
