@@ -11,6 +11,7 @@ app.use(cors());
 
 
 app.use('/api', require('./routes/api'))
+// Hosting
 app.use(express.static(__dirname + "/../nft-minting-frontend/build"));
 app.get('/*', function (req, res) {
 	res.sendFile(__dirname + '/index.html', function (err) {
